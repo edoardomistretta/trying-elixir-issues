@@ -13,8 +13,8 @@ defmodule Issues.GitHubIssues do
 
   def handle_response({_, %{status_code: status_code, body: body}}) do
     {
-      status_code |> check_for_error(),
-      body |> Poison.Parser.parse!()
+      status_code |> check_for_error,
+      body |> Poison.Parser.parse!
     }
   end
   defp check_for_error(200) do :ok end
