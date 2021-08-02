@@ -40,4 +40,9 @@ usage: issues <user> <project> [count | #{@default_count}}]
     IO.puts "Error fetching from Github: #{error["message"]}}"
     System.halt(2)
   end
+
+  def sort_into_descending_order(list_of_issues) do
+    list_of_issues
+      |> Enum.sort(&(&1.created_at >= &2.created_at))
+  end
 end

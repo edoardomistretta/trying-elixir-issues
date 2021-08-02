@@ -16,4 +16,13 @@ defmodule Issues.CLITest do
   test "count is defaulted if two values given" do
     assert parse_args(["user", "project"]) == {"user", "project", 4}
   end
+
+  test "sort descending orders the correct way" do
+    r = ["c", "b", "a"]
+      |> Enum.map(&(%{created_at: &1}))
+      |> sort_into_descending_order
+      |> Enum.map(&(&1.created_at))
+
+    assert r == ["c", "b", "a"]
+  end
 end
