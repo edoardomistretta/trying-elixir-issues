@@ -25,4 +25,11 @@ defmodule Issues.CLITest do
 
     assert r == ["c", "b", "a"]
   end
+
+  test "get some elements from list and reverse these elements" do
+    r = ["a", "c", "b"]
+        |> last(2)
+
+    assert r == ["c", "a"]
+  end
 end
