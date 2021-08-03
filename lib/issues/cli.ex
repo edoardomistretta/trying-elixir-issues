@@ -32,7 +32,8 @@ usage: issues <user> <project> [count | #{@default_count}}]
 
   def process({user, project, count}) do
     Issues.GitHubIssues.fetch(user, project)
-    |> decode_response()
+    |> decode_response
+    |> sort_into_descending_order
   end
 
   def decode_response({:ok, body}) do body end
@@ -43,6 +44,6 @@ usage: issues <user> <project> [count | #{@default_count}}]
 
   def sort_into_descending_order(list_of_issues) do
     list_of_issues
-      |> Enum.sort(&(&1.created_at >= &2.created_at))
+      |> Enum.sort(&(&1["created_at"] <= &2["created_at"]))
   end
 end
