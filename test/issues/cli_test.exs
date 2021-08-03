@@ -21,8 +21,8 @@ defmodule Issues.CLITest do
     r = ["a", "c", "b"]
       |> Enum.map(&(%{created_at: &1, other: "XXX"}))
       |> sort_into_descending_order
-#      |> Enum.map(&(&1.created_at))
-    IO.inspect r
-#    assert ["a", "c", "b"] |> Enum.map(&(%{created_at: &1, "other": "XXX"})) |> sort_into_descending_order |> Enum.map(&(&1.created_at)) == ["c", "b", "a"]
+      |> Enum.map(&(&1.created_at))
+
+    assert r == ["c", "b", "a"]
   end
 end
