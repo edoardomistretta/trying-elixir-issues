@@ -35,11 +35,12 @@ usage: issues <user> <project> [count | #{@default_count}}]
     |> decode_response
     |> sort_into_descending_order
     |> last(count)
+    |> Issues.TableFormatter.print_table_for_columns(["number", "created_at", "title"])
   end
 
   def decode_response({:ok, body}) do body end
   def decode_response({:error, error}) do
-    IO.puts "Error fetching from Github: #{error["message"]}}"
+    IO.puts "Error fetching from Github: #{error["message"]}"
     System.halt(2)
   end
 
