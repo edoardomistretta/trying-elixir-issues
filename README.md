@@ -8,5 +8,5 @@ This tool is part of the learning process with [Programming Elixir 1.6](https://
 ```shell
 mix deps.get
 mix escript.build
-./issues
+./issues <user> <project> [count | 4}]
 ```
